@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resize Pro</title>
+    <link rel="shortcut icon" href="./favicon.png">
+    <meta name="description" content="Image Resizer Pro - Resize JPG, PNG and WEBP images online quickly and easily.">
+
+<meta name="keywords" content="image resizer, resize image online, compress image, jpg resizer, png resizer">
+
+<meta name="author" content="Image Resizer Pro">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Image Resize Pro</h1>
+    <p>Resize JPG, PNG & WEBP Images Online</p>
+</header><button id="themeBtn">🌙 Dark Mode</button>
+
+<div class="container">
+
+    <div class="upload-box">
+        <input type="file" id="imageInput" accept="image/*">
+        <p>Select or Drag & Drop your Image</p>
+    </div>
+
+    <div class="controls">
+        <input type="number" id="width" placeholder="Width">
+        <input type="number" id="height" placeholder="Height">
+<label>
+    <input type="checkbox" id="lockRatio" checked>
+    Lock Aspect Ratio
+</label>
+<div id="loader" class="loader">
+    Processing...
+</div>
+        <button id="resizeBtn">Resize Image</button>
+        <div class="rotate-controls">
+    <button id="rotateLeftBtn">↺ Rotate Left</button>
+    <button id="rotateRightBtn">↻ Rotate Right</button>
+</div>
+
+<div class="flip-controls">
+    <button id="flipHorizontalBtn">↔ Flip Horizontal</button>
+    <button id="flipVerticalBtn">↕ Flip Vertical</button>
+</div>
+
+<button id="resetBtn">🔄 Reset Image</button>
+    <div class="preview">
+        <img id="previewImage" src="" alt="">
+        <div class="image-info">
+            <p><strong>Original Size:</strong> <span id="fileSize">-</span></p>
+<p><strong>Dimensions:</strong> <span id="dimensions">-</span></p>
+<p><strong>Resized Size:</strong> <span id="resizedSize">-</span></p>
+<p><strong>Space Saved:</strong> <span id="savedPercent">-</span></p>
+    <p><strong>Original Size:</strong> <span id="fileSize">-</span></p>
+    <p><strong>Dimensions:</strong> <span id="dimensions">-</span></p>
+</div>
+    </div>
+<div class="format-box">
+    <label for="format">Download Format:</label>
+    <div class="quality-box">
+    <label for="quality">
+        Image Quality:
+        <span id="qualityValue">90</span>%
+    </label>
+
+    <input
+        type="range"
+        id="quality"
+        min="10"
+        max="100"
+        value="90">
+</div>
+    <select id="format">
+        <option value="image/png">PNG</option>
+        <option value="image/jpeg">JPG</option>
+        <option value="image/webp">WEBP</option>
+    </select>
+</div>
+    <a id="downloadBtn" download="resized-image.png">
+        <button>Download Image</button>
+    </a>
+
+</div>
+
+<script src="script.js"></script>
+<footer>
+
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="contact.html">Contact Us</a>
+
+</footer>
+
+</body>
+</html>
