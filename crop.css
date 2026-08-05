@@ -1,0 +1,220 @@
+/* ===========================
+   Crop Tool
+=========================== */
+
+.crop-editor{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-top:25px;
+}
+
+/* Toolbar */
+
+.toolbar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    flex-wrap:nowrap;
+    margin:15px 0;
+}
+
+.toolbar{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-left:12px;
+}
+
+.crop-preview{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin:20px 0;
+}
+
+.toolbar{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.toolbar button{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:#22c55e;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0;
+    box-shadow:0 4px 10px rgba(0,0,0,.25);
+    transition:.25s;
+}
+
+.toolbar button:hover{
+    background:#16a34a;
+    transform:scale(1.08);
+}
+
+/* Preview */
+
+.preview-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+}
+
+#previewImage{
+    display:none;
+    max-width:220px;
+    width:100%;
+    height:auto;
+    border-radius:12px;
+    box-shadow:0 5px 18px rgba(0,0,0,.25);
+}
+
+/* Information */
+
+.info-box{
+    width:100%;
+    max-width:420px;
+    background:#1e293b;
+    color:#fff;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 5px 18px rgba(0,0,0,.2);
+}
+
+.info-box h3{
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.info-box p{
+    margin:8px 0;
+}
+
+/* Settings */
+
+.settings-panel{
+    width:100%;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.settings-panel label{
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.settings-panel select,
+.settings-panel input[type="number"]{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.settings-panel input[type="range"]{
+    width:100%;
+}
+
+.size-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+/* Download */
+
+.download-section{
+    margin-top:10px;
+}
+
+#downloadImageBtn{
+    padding:12px 28px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#downloadImageBtn:hover{
+    background:#16a34a;
+}
+
+/* Success */
+
+.success-message{
+    display:none;
+    background:#22c55e;
+    color:#fff;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:bold;
+    text-align:center;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.toolbar{
+    gap:8px;
+}
+
+.toolbar button{
+    padding:8px 12px;
+    font-size:14px;
+}
+
+#previewImage{
+    max-width:170px;
+}
+
+.info-box,
+.settings-panel{
+    width:95%;
+}
+
+}
+.download-section{
+    display:flex !important;
+    justify-content:center;
+    margin:25px auto;
+    width:100%;
+}
+
+#downloadBtn{
+    display:block !important;
+}
+
+#downloadImageBtn{
+    display:block !important;
+    width:220px;
+    padding:14px;
+    background:#22c55e;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}

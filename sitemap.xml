@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+<loc>https://your-domain.com/</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/about.html</loc>
+</url>
+
+
+<url>
+<loc>https://your-domain.com/contact.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/privacy.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/terms.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/disclaimer.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/compress.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/convert.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/crop.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/background-remover.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/watermark.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/image-to-pdf.html</loc>
+</url>
+
+<url>
+<loc>https://your-domain.com/pdf-to-image.html</loc>
+</url>
+
+<url>
+   <loc>https://yourdomain.com/how-to-resize-image.html</loc>
+</url>
+
+<url>
+   <loc>https://yourdomain.com/how-to-compress-image.html</loc>
+</url>
+
+<url>
+   <loc>https://yourdomain.com/how-to-crop-image.html</loc>
+</url>
+
+<url>
+   <loc>https://yourdomain.com/how-to-remove-background.html</loc>
+</url>
+</urlset>

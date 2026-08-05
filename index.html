@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +11,38 @@
 <meta name="keywords" content="image resizer, resize image online, compress image, jpg resizer, png resizer">
 
 <meta name="author" content="Image Resizer Pro">
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
 </head>
 <body>
 
+
+
+<nav class="tools-navbar">
+    <a href="index.html" class="active">🖼 Resize</a>
+    <a href="compress.html">🗜 Compress</a>
+    <a href="convert.html">🔄 Convert</a>
+    <a href="crop.html">✂ Crop</a>
+    <a href="background-remover.html">🎨 Background Remover</a>
+    <a href="watermark.html">💧 Watermark</a>
+    <a href="image-to-pdf.html">📄 Image to PDF</a>
+    <a href="pdf-to-image.html">🖼 PDF to Image</a>
+</nav>
+
 <header>
-    <h1>Image Resize Pro</h1>
-    <p>Resize JPG, PNG & WEBP Images Online</p>
-</header><button id="themeBtn">🌙 Dark Mode</button>
+    <div class="header-content">
+        <div class="logo-area">
+
+            <div>
+                <h1>Image Resize Pro</h1>
+                <p>Free Online Image Editing Tools</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<button id="themeBtn">🌙 Dark Mode</button>
+
 
 <div class="container">
 
@@ -26,71 +51,203 @@
         <p>Select or Drag & Drop your Image</p>
     </div>
 
-    <div class="controls">
-        <input type="number" id="width" placeholder="Width">
-        <input type="number" id="height" placeholder="Height">
-<label>
-    <input type="checkbox" id="lockRatio" checked>
-    Lock Aspect Ratio
-</label>
 <div id="loader" class="loader">
     Processing...
 </div>
-        <button id="resizeBtn">Resize Image</button>
-        <div class="rotate-controls">
-    <button id="rotateLeftBtn">↺ Rotate Left</button>
-    <button id="rotateRightBtn">↻ Rotate Right</button>
-</div>
+        
+    <div class="editor-layout">
 
-<div class="flip-controls">
-    <button id="flipHorizontalBtn">↔ Flip Horizontal</button>
-    <button id="flipVerticalBtn">↕ Flip Vertical</button>
-</div>
+    <div class="left-panel">
 
-<button id="resetBtn">🔄 Reset Image</button>
-    <div class="preview">
-        <img id="previewImage" src="" alt="">
-        <div class="image-info">
-            <p><strong>Original Size:</strong> <span id="fileSize">-</span></p>
-<p><strong>Dimensions:</strong> <span id="dimensions">-</span></p>
-<p><strong>Resized Size:</strong> <span id="resizedSize">-</span></p>
-<p><strong>Space Saved:</strong> <span id="savedPercent">-</span></p>
-    <p><strong>Original Size:</strong> <span id="fileSize">-</span></p>
-    <p><strong>Dimensions:</strong> <span id="dimensions">-</span></p>
+        <div class="preview">
+            <img id="previewImage" src="" alt="">
+
+<div class="right-panel">
+    
+
+    <button id="cropBtn" class="tool-btn" title="Crop">✂</button>
+    <button id="applyCropBtn" class="tool-btn" style="display:none;" title="Apply Crop">✔</button>
+
+    <button id="rotateLeftBtn" class="tool-btn">↺</button>
+
+    <button id="flipHorizontalBtn" class="tool-btn">↔</button>
+
+    <button id="removeImageBtn" class="tool-btn">🗑</button>
+
 </div>
+    
+    <div id="resizeControls">
+
+    <div class="resize-box">
+        <input type="number" id="width" placeholder="Width">
+        <input type="number" id="height" placeholder="Height">
     </div>
-<div class="format-box">
-    <label for="format">Download Format:</label>
-    <div class="quality-box">
-    <label for="quality">
-        Image Quality:
-        <span id="qualityValue">90</span>%
+
+    <label class="lock-label">
+        <input type="checkbox" id="lockRatio" checked>
+        <span>Lock Aspect Ratio</span>
     </label>
 
-    <input
-        type="range"
-        id="quality"
-        min="10"
-        max="100"
-        value="90">
 </div>
-    <select id="format">
-        <option value="image/png">PNG</option>
-        <option value="image/jpeg">JPG</option>
-        <option value="image/webp">WEBP</option>
-    </select>
+        </div>
+
+        <div class="image-info">
+            <p><strong>Original Size:</strong> <span id="fileSize">-</span></p>
+            <p><strong>Dimensions:</strong> <span id="dimensions">-</span></p>
+            <p><strong>Resized Size:</strong> <span id="resizedSize">-</span></p>
+            <p><strong>Saved:</strong> <span id="savedPercent">-</span></p>
+            
+        </div>
+
+    </div>
+
+   
 </div>
+
+    <div class="settings-row">
+
+    <div class="quality-box">
+        <label for="quality">
+            Image Quality:
+            <span id="qualityValue">90</span>%
+        </label>
+
+        <input
+            type="range"
+            id="quality"
+            min="10"
+            max="100"
+            value="90">
+    </div>
+
+    <div class="format-box">
+        <label for="format">Download Format:</label>
+
+        <select id="format">
+            <option value="image/png">PNG</option>
+            <option value="image/jpeg">JPG</option>
+            <option value="image/webp">WEBP</option>
+        </select>
+    </div>
+
+</div>
+
+<button id="resizeBtn">Resize Image</button>
     <a id="downloadBtn" download="resized-image.png">
         <button>Download Image</button>
     </a>
+    <p id="successMessage" style="display:none; color:#22c55e; font-weight:600; margin-top:10px;">
+    ✅ Image resized successfully! Click Download.
+</p>
 
 </div>
 
 <script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+<!-- Image Editing Guides -->
+<section class="guides-section">
+    <div class="container">
+
+        <h2>📖 Image Editing Guides</h2>
+        <p class="guides-intro">
+            Learn how to resize, compress, crop, convert and edit images online with our free Image Resize Pro tools.
+        </p>
+
+        <div class="guides-grid">
+
+            <div class="guide-card">
+                <h3>🖼 How to Resize an Image</h3>
+                <p>
+                    Resize JPG, PNG and WEBP images online without losing quality.
+                    Upload your image, choose the required dimensions and download instantly.
+                </p>
+                <a href="how-to-resize-image.html">Read Full Guide →</a>
+            </div>
+
+            <div class="guide-card">
+                <h3>🗜 How to Compress an Image</h3>
+                <p>
+                    Reduce image file size while keeping the best possible quality.
+                    Perfect for websites, email attachments and social media.
+                </p>
+                <a href="how-to-compress-image.html">Read Full Guide →</a>
+            </div>
+
+            <div class="guide-card">
+            
+    <h3>🔄 How to Convert an Image</h3>
+    <p>
+        Convert JPG, PNG and WEBP images into your preferred format quickly without installing any software.
+    </p>
+    <a href="#">Read Full Guide →</a>
+</div>
+
+<div class="guide-card">
+    <h3>✂️ How to Crop an Image</h3>
+    <p>
+        Remove unwanted parts of your images while keeping the perfect aspect ratio for your needs.
+    </p>
+    <a href="how-to-crop-image.html">Read Full Guide →</a>
+</div>
+
+<div class="guide-card">
+    <h3>🎨 How to Remove Background</h3>
+    <p>
+        Remove image backgrounds automatically and download transparent PNG images in seconds.
+    </p>
+    
+</div>
+
+<div class="guide-card">
+    <h3>💧 How to Add Watermark</h3>
+    <p>
+        Protect your images by adding custom text or image watermarks before sharing online.
+    </p>
+    <a href="#">Read Full Guide →</a>
+</div>
+
+<div class="guide-card">
+    <h3>📄 Image to PDF Guide</h3>
+    <p>
+        Convert one or multiple images into a high-quality PDF document quickly and securely.
+    </p>
+    <a href="#">Read Full Guide →</a>
+</div>
+
+<div class="guide-card">
+    <h3>🖼 PDF to Image Guide</h3>
+    <p>
+        Extract high-quality images from PDF files and download them in JPG or PNG format.
+    </p>
+    <a href="#">Read Full Guide →</a>
+</div>
+
+        </div>
+
+
+    </div>
+</section>
+
 <footer>
 
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="contact.html">Contact Us</a>
+<div class="footer-links">
+
+<a href="about.html">About Us</a>
+
+<a href="privacy.html">Privacy Policy</a>
+
+<a href="terms.html">Terms & Conditions</a>
+
+<a href="disclaimer.html">Disclaimer</a>
+
+<a href="contact.html">Contact Us</a>
+
+</div>
+
+<p>
+© 2026 Image Resize Pro. All Rights Reserved.
+</p>
 
 </footer>
 

@@ -1,6 +1,8 @@
 const imageInput = document.getElementById("imageInput");
 const previewImage = document.getElementById("previewImage");
 
+const removeImageBtn = document.getElementById("removeImageBtn");
+
 const widthInput = document.getElementById("width");
 const heightInput = document.getElementById("height");
 
@@ -14,13 +16,17 @@ const lockRatio = document.getElementById("lockRatio");
 
 let originalImage = new Image();
 let aspectRatio = 1;
+let cropper = null;
 
+const rightPanel = document.querySelector(".right-panel");
+rightPanel.style.display = "none";
 
 imageInput.addEventListener("change", function () {
 
     const file = this.files[0];
 
     if (!file) return;
+    
 
 
     // Original file size
@@ -35,24 +41,35 @@ imageInput.addEventListener("change", function () {
 
         originalImage.src = e.target.result;
 
+originalImage.onload = function(){
 
-        originalImage.onload = function(){
+    previewImage.src = originalImage.src;
+    rightPanel.style.display = "flex";
+    previewImage.style.display = "block";
+    rightPanel.style.display = "flex";
+    document.querySelector(".right-panel").style.display = "flex";
 
-            previewImage.src = originalImage.src;
-            previewImage.style.display = "block";
+    document.querySelector(".preview").style.display = "block";
+    document.querySelector(".image-info").style.display = "block";
+    document.getElementById("resizeControls").style.display = "block";
+    document.querySelector(".format-box").style.display = "block";
+    downloadBtn.style.display = "block";
 
+   
+    cropBtn.style.display = "block";
 
-            widthInput.value = originalImage.width;
-            heightInput.value = originalImage.height;
+    widthInput.value = originalImage.width;
+    heightInput.value = originalImage.height;
 
+    if (cropper) {
+        cropper.destroy();
+    }
 
-            aspectRatio = originalImage.width / originalImage.height;
+    aspectRatio = originalImage.width / originalImage.height;
 
-
-            dimensionsText.textContent =
-            originalImage.width + " × " + originalImage.height + " px";
-
-        };
+    dimensionsText.textContent =
+        originalImage.width + " × " + originalImage.height + " px";
+};
 
     };
 
@@ -117,11 +134,20 @@ if (rotation % 180 === 0) {
     canvas.height = width;
 }
 
-   ctx.save();
+  ctx.save();
+
+// JPG ke liye pehle white background
+if(formatSelect.value === "image/jpeg"){
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
 
 ctx.translate(canvas.width / 2, canvas.height / 2);
+
 ctx.rotate(-rotation * Math.PI / 180);
+
 ctx.scale(flipX, flipY);
+
 ctx.drawImage(
     originalImage,
     -width / 2,
@@ -134,6 +160,7 @@ ctx.restore();
 
 
     const format = formatSelect.value;
+    
 
     const quality = qualitySlider.value / 100;
 
@@ -142,6 +169,15 @@ ctx.restore();
         format,
         quality
     );
+    downloadBtn.href = resizedImage;
+
+if (format === "image/jpeg") {
+    downloadBtn.download = "resized-image.jpg";
+} else if (format === "image/webp") {
+    downloadBtn.download = "resized-image.webp";
+} else {
+    downloadBtn.download = "resized-image.png";
+}
 
     const resizedSizeKB = ((resizedImage.length * 3 / 4) / 1024).toFixed(2);
 resizedSizeText.textContent = resizedSizeKB + " KB";
@@ -158,6 +194,10 @@ savedPercentText.textContent =
 
 
     downloadBtn.href = resizedImage;
+    const successMessage = document.getElementById("successMessage");
+successMessage.style.display = "block";
+successMessage.textContent =
+"✅ Image resized successfully! Click Download.";
     setTimeout(() => {
     loader.style.display = "none";
 }, 800);
@@ -177,24 +217,28 @@ savedPercentText.textContent =
 
 });
 const rotateLeftBtn = document.getElementById("rotateLeftBtn");
-const rotateRightBtn = document.getElementById("rotateRightBtn");
+
 const flipHorizontalBtn = document.getElementById("flipHorizontalBtn");
-const flipVerticalBtn = document.getElementById("flipVerticalBtn");
-const resetBtn = document.getElementById("resetBtn");
+
+
 
 let rotation = 0;
 let flipX = 1;
 let flipY = 1;
 const themeBtn = document.getElementById("themeBtn");
 
+// Default Dark Mode
+document.body.classList.add("dark");
+themeBtn.innerHTML = "☀️ Light Mode";
+
+// Theme Toggle
 themeBtn.addEventListener("click", () => {
 
     document.body.classList.toggle("dark");
 
-    if(document.body.classList.contains("dark")){
+    if (document.body.classList.contains("dark")) {
         themeBtn.innerHTML = "☀️ Light Mode";
-    }
-    else{
+    } else {
         themeBtn.innerHTML = "🌙 Dark Mode";
     }
 
@@ -227,6 +271,8 @@ uploadBox.addEventListener("drop", (e) => {
 
         imageInput.dispatchEvent(new Event("change"));
 
+        document.querySelector(".right-panel").style.display = "flex";
+
     }
 
 });
@@ -235,35 +281,90 @@ rotateLeftBtn.addEventListener("click", () => {
     previewImage.style.transform =
         `rotate(${rotation}deg) scale(${flipX}, ${flipY})`;
 });
-rotateRightBtn.addEventListener("click", () => {
-    rotation += 90;
-    previewImage.style.transform =
-        `rotate(${rotation}deg) scale(${flipX}, ${flipY})`;
-});
+
+
 flipHorizontalBtn.addEventListener("click", () => {
     flipX *= -1;
     previewImage.style.transform =
         `rotate(${rotation}deg) scale(${flipX}, ${flipY})`;
 });
 
-flipVerticalBtn.addEventListener("click", () => {
-    flipY *= -1;
-    previewImage.style.transform =
-        `rotate(${rotation}deg) scale(${flipX}, ${flipY})`;
-});
-resetBtn.addEventListener("click", () => {
 
-    rotation = 0;
-    flipX = 1;
-    flipY = 1;
 
-    previewImage.style.transform = "rotate(0deg) scale(1,1)";
+const cropBtn = document.getElementById("cropBtn");
+const applyCropBtn = document.getElementById("applyCropBtn");
 
-    if (originalImage.src) {
-        previewImage.src = originalImage.src;
+cropBtn.addEventListener("click", () => {
 
-        widthInput.value = originalImage.width;
-        heightInput.value = originalImage.height;
+    rightPanel.classList.add("crop-mode");
+
+    if (cropper) {
+        cropper.destroy();
     }
 
+    cropper = new Cropper(previewImage, {
+        viewMode: 1,
+        autoCropArea: 1,
+        movable: true,
+        zoomable: true,
+        scalable: true,
+        rotatable: true
+    });
+
+    document.getElementById("applyCropBtn").style.display = "block";
+
+});
+applyCropBtn.addEventListener("click", () => {
+
+    if (!cropper) return;
+
+   const canvas = cropper.getCroppedCanvas();
+
+let croppedImage;
+
+if (formatSelect.value === "image/jpeg") {
+    croppedImage = canvas.toDataURL("image/jpeg", qualitySlider.value / 100);
+} else if (formatSelect.value === "image/webp") {
+    croppedImage = canvas.toDataURL("image/webp", qualitySlider.value / 100);
+} else {
+    croppedImage = canvas.toDataURL("image/png");
+}
+
+previewImage.src = croppedImage;
+
+originalImage.src = croppedImage;
+
+downloadBtn.href = croppedImage;
+
+if (formatSelect.value === "image/jpeg") {
+    downloadBtn.download = "cropped-image.jpg";
+} else if (formatSelect.value === "image/webp") {
+    downloadBtn.download = "cropped-image.webp";
+} else {
+    downloadBtn.download = "cropped-image.png";
+}
+
+cropper.destroy();
+cropper = null;
+
+applyCropBtn.style.display = "none";
+
+rightPanel.classList.remove("crop-mode");
+
+});
+removeImageBtn.addEventListener("click", function () {
+
+    previewImage.src = "";
+    previewImage.style.display = "none";
+
+    imageInput.value = "";
+
+    document.querySelector(".preview").style.display = "none";
+    document.querySelector(".image-info").style.display = "none";
+    document.getElementById("resizeControls").style.display = "none";
+
+    rightPanel.style.display = "none";
+
+    widthInput.value = "";
+    heightInput.value = "";
 });

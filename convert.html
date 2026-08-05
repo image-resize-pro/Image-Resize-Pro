@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Image - Image Resize Pro</title>
+    <link rel="shortcut icon" href="./favicon.png">
+    
+    <meta name="description" content="Image Resizer Pro - Resize JPG, PNG and WEBP images online quickly and easily.">
+
+<meta name="keywords" content="image resizer, resize image online, compress image, jpg resizer, png resizer">
+
+<meta name="author" content="Image Resizer Pro">
+
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f172a">
+
+<meta property="og:title" content="Convert Image - Image Resize Pro">
+<meta property="og:description" content="Convert JPG, PNG and WEBP images online for free.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="./favicon.png">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+</head>
+<body>
+
+
+
+<nav class="tools-navbar">
+    <a href="index.html" >🖼 Resize</a>
+    <a href="compress.html">🗜 Compress</a>
+    <a href="convert.html" class="active">🔄 Convert</a>
+    <a href="crop.html">✂ Crop</a>
+    <a href="background-remover.html">🎨 Background Remover</a>
+    <a href="watermark.html">💧 Watermark</a>
+    <a href="image-to-pdf.html">📄 Image to PDF</a>
+    <a href="pdf-to-image.html">🖼 PDF to Image</a>
+</nav>
+<header>
+    <div class="header-content">
+        <div class="logo-area">
+
+            <div>
+                <h1>Convert Image</h1>
+                <p>Convert Images to JPG, PNG and WEBP</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<button id="themeBtn">🌙 Dark Mode</button>
+
+
+<div class="container">
+
+    <div class="upload-box">
+        <input type="file" id="imageInput" accept="image/*">
+        <p>Select or Drag & Drop your Image</p>
+    </div>
+ 
+<div id="loader" class="loader">
+    Processing...
+</div>
+        
+    <div class="editor-layout">
+
+    <div class="left-panel">
+
+        <div class="preview">
+            <img id="previewImage" src="" alt="">
+            </div>
+
+            <div id="resizeControls">
+
+            <div class="resize-box">
+    <input type="number" id="width" placeholder="Width">
+    <input type="number" id="height" placeholder="Height">
+ </div>
+
+    <label class="lock-label">
+        <input type="checkbox" id="lockRatio" checked>
+        Lock Aspect Ratio
+    </label>
+
+</div>
+       
+
+        <div class="image-info">
+            <p><strong>Original Size:</strong> <span id="fileSize">-</span></p>
+            <p><strong>Dimensions:</strong> <span id="dimensions">-</span></p>
+            <p><strong>Resized Size:</strong> <span id="resizedSize">-</span></p>
+            <p><strong>Space Saved:</strong> <span id="savedPercent">-</span></p>
+        </div>
+
+    </div>
+
+    
+
+</div>
+
+    <div class="settings-row">
+
+    <div class="quality-box">
+        <label for="quality">
+            Image Quality:
+            <span id="qualityValue">90</span>%
+        </label>
+
+        <input
+            type="range"
+            id="quality"
+            min="10"
+            max="100"
+            value="90">
+    </div>
+
+    <div class="format-box">
+        <label for="format">Download Format:</label>
+
+        <select id="format">
+            <option value="image/png">PNG</option>
+            <option value="image/jpeg">JPG</option>
+            <option value="image/webp">WEBP</option>
+        </select>
+    </div>
+
+</div>
+<button id="convertBtn">Convert Image</button>
+    <a id="downloadBtn" download="resized-image.png">
+        <div id="successMessage" class="success-message">
+    ✅ Image Converted Successfully
+</div>
+        <button>Download Image</button>
+    </a>
+
+</div>
+
+<script src="convert.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+<footer>
+
+<div class="footer-links">
+
+<a href="about.html">About Us</a>
+
+<a href="privacy.html">Privacy Policy</a>
+
+<a href="terms.html">Terms & Conditions</a>
+
+<a href="disclaimer.html">Disclaimer</a>
+
+<a href="contact.html">Contact Us</a>
+
+</div>
+
+<p>
+© 2026 Image Resize Pro. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>

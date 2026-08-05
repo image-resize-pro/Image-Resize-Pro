@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Crop Image - Image Resize Pro</title>
+
+<meta name="description" content="Crop images online for free with Image Resize Pro. Crop JPG, PNG and WEBP images easily.">
+
+<meta name="keywords" content="crop image, image cropper, crop jpg, crop png, crop photo online">
+
+<meta name="author" content="Image Resize Pro">
+
+<meta name="robots" content="index, follow">
+
+<meta name="theme-color" content="#0f172a">
+
+<meta property="og:title" content="Crop Image - Image Resize Pro">
+
+<meta property="og:description" content="Crop images online for free.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="./favicon.png">
+
+<link rel="shortcut icon" href="./favicon.png">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="crop.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+
+</head>
+
+<body>
+    <nav class="tools-navbar">
+
+<a href="index.html">🖼 Resize</a>
+
+<a href="compress.html">🗜 Compress</a>
+
+<a href="convert.html">🔄 Convert</a>
+
+<a href="crop.html" class="active">✂ Crop</a>
+
+<a href="background-remover.html">🎨 Background Remover</a>
+
+<a href="watermark.html">💧 Watermark</a>
+
+<a href="image-to-pdf.html">📄 Image to PDF</a>
+
+<a href="pdf-to-image.html">🖼 PDF to Image</a>
+
+</nav>
+<header>
+
+<div class="header-content">
+
+<div class="logo-area">
+
+<div>
+
+<h1>Crop Image</h1>
+
+<p>Professional Image Crop Tool</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<button id="themeBtn">
+🌙 Dark Mode
+</button>
+
+<div class="container">
+
+    <div class="upload-box">
+
+    <input
+        type="file"
+        id="imageInput"
+        accept="image/*">
+
+    <p>📷 Select or Drag & Drop your Image</p>
+
+</div>
+
+<div id="loader" class="loader">
+    Processing...
+</div>
+
+    <div class="crop-editor">
+
+    <div class="preview-box">
+
+        <img id="previewImage" src="" alt="Preview">
+
+    </div>
+
+    <div class="toolbar">
+
+        <button id="cropBtn">Crop</button>
+        
+        <button id="rotateRightBtn">↻</button>
+        <button id="flipHorizontalBtn">↔</button>
+        <button id="resetBtn">❌</button>
+
+        <button id="applyCropBtn" style="display:none;">
+            ✔
+        </button>
+
+    </div>
+
+</div>
+
+    <div class="info-box">
+
+        <h3>Image Information</h3>
+
+        <p>Original Size :
+            <span id="originalSize">-</span>
+        </p>
+
+        <p>Original Dimensions :
+            <span id="originalDimension">-</span>
+        </p>
+
+        <p>Cropped Size :
+            <span id="croppedSize">-</span>
+        </p>
+
+        <p>Cropped Dimensions :
+            <span id="croppedDimension">-</span>
+        </p>
+
+    </div>
+
+    <div class="settings-panel">
+
+        <div class="format-box">
+
+            <label>Download Format</label>
+
+            <select id="format">
+
+                <option value="image/png">PNG</option>
+
+                <option value="image/jpeg">JPG</option>
+
+                <option value="image/webp">WEBP</option>
+
+            </select>
+
+        </div>
+
+        <div class="quality-box">
+
+            <label>
+
+                Image Quality
+
+                <span id="qualityValue">90%</span>
+
+            </label>
+
+            <input type="range"
+                id="quality"
+                min="10"
+                max="100"
+                value="90">
+
+        </div>
+
+        <div class="size-box">
+
+            <label>Width</label>
+
+            <input type="number"
+                id="customWidth">
+
+            <label>Height</label>
+
+            <input type="number"
+                id="customHeight">
+
+        </div>
+
+    </div>
+
+<div id="successMessage" class="success-message">
+
+✅ Image Cropped Successfully
+
+</div>
+    <div class="download-section">
+
+        <a id="downloadBtn">
+
+            <button id="downloadImageBtn">
+
+                ⬇ Download Image
+
+            </button>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+<div class="footer-links">
+
+<a href="about.html">About Us</a>
+
+<a href="privacy.html">Privacy Policy</a>
+
+<a href="terms.html">Terms & Conditions</a>
+
+<a href="disclaimer.html">Disclaimer</a>
+
+<a href="contact.html">Contact Us</a>
+
+</div>
+
+<p>
+© 2026 Image Resize Pro. All Rights Reserved.
+</p>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+<script src="crop.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermark Image - Image Resize Pro</title>
+    <link rel="shortcut icon" href="./favicon.png">
+    <meta name="description" content="Image Resizer Pro - Resize JPG, PNG and WEBP images online quickly and easily.">
+
+<meta name="keywords" content="image resizer, resize image online, compress image, jpg resizer, png resizer">
+
+<meta name="author" content="Image Resizer Pro">
+
+<meta name="robots" content="index, follow">
+
+<meta name="theme-color" content="#0f172a">
+
+<meta property="og:title" content="Watermark Image - Image Resize Pro">
+
+<meta property="og:description" content="Add watermark to images online for free.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="./favicon.png">
+
+<link rel="shortcut icon" href="./favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+</head>
+<body>
+
+
+
+<nav class="tools-navbar">
+    <a href="index.html">🖼 Resize</a>
+    <a href="compress.html">🗜 Compress</a>
+    <a href="convert.html">🔄 Convert</a>
+    <a href="crop.html">✂ Crop</a>
+    <a href="background-remover.html">🎨 Background Remover</a>
+    <a href="watermark.html" class="active">💧 Watermark</a>
+    <a href="image-to-pdf.html">📄 Image to PDF</a>
+    <a href="pdf-to-image.html">🖼 PDF to Image</a>
+</nav>
+
+<header>
+    <div class="header-content">
+        <div class="logo-area">
+
+            <div>
+                <h1>Watermark Image</h1>
+                <p>Add Text or Logo Watermark</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<button id="themeBtn">🌙 Dark Mode</button>
+
+
+<div class="container">
+
+    <div class="upload-box">
+        <input type="file" id="imageInput" accept="image/*">
+        <p>Select or Drag & Drop your Image</p>
+    </div>
+
+<div id="loader" class="loader">
+    Processing...
+</div>
+        
+    <div class="editor-layout">
+
+    <div class="left-panel">
+
+        <div class="preview">
+            <img id="previewImage" src="" alt="">
+    
+        </div>
+
+        <div class="image-info">
+            <p><strong>Original Size:</strong> <span id="fileSize">-</span></p>
+            <p><strong>Dimensions:</strong> <span id="dimensions">-</span></p>
+            <p><strong>Resized Size:</strong> <span id="resizedSize">-</span></p>
+            <p><strong>Space Saved:</strong> <span id="savedPercent">-</span></p>
+        </div>
+
+    </div>
+
+
+</div>
+
+    <div class="settings-row">
+
+
+    <div class="format-box">
+        <div class="settings-row">
+
+    <div class="quality-box">
+        <label for="watermarkText">Watermark Text</label>
+
+        <input
+            type="text"
+            id="watermarkText"
+            placeholder="Enter watermark text">
+    </div>
+
+    <div class="quality-box">
+        <label for="fontSize">
+    Font Size:
+    <span id="fontSizeValue">40</span>px
+</label>
+
+        <input
+            type="range"
+            id="fontSize"
+            min="20"
+            max="100"
+            value="40">
+    </div>
+    <div class="quality-box">
+    <label for="opacity">
+        Opacity:
+        <span id="opacityValue">25</span>%
+    </label>
+
+    <input
+        type="range"
+        id="opacity"
+        min="5"
+        max="100"
+        value="25">
+</div>
+<div class="quality-box">
+    <label for="watermarkColor">Watermark Color</label>
+    <input type="color" id="watermarkColor" value="#ffffff">
+</div>
+        
+
+</div>
+<div class="quality-box">
+    <label for="downloadFormat">Download Format</label>
+    <select id="downloadFormat">
+        <option value="png">PNG</option>
+        <option value="jpeg">JPG</option>
+        <option value="webp">WEBP</option>
+    </select>
+</div>
+<button id="addWatermarkBtn">💧 Add Watermark</button>
+
+<a id="downloadBtn" style="display:none;">
+    <button>⬇️ Download Image</button>
+</a>
+
+</div>
+
+<script src="watermark.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+<footer>
+
+<div class="footer-links">
+
+<a href="about.html">About Us</a>
+
+<a href="privacy.html">Privacy Policy</a>
+
+<a href="terms.html">Terms & Conditions</a>
+
+<a href="disclaimer.html">Disclaimer</a>
+
+<a href="contact.html">Contact Us</a>
+
+</div>
+
+<p>
+© 2026 Image Resize Pro. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>

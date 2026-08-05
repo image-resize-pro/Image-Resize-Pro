@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF to Image - Image Resize Pro</title>
+
+<link rel="shortcut icon" href="./favicon.png">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="pdf-to-image.css">
+
+</head>
+
+<body>
+    <nav class="tools-navbar">
+
+<a href="index.html">🖼 Resize</a>
+
+<a href="compress.html">🗜 Compress</a>
+
+<a href="convert.html">🔄 Convert</a>
+
+<a href="crop.html">✂ Crop</a>
+
+<a href="background-remover.html">🎨 Background Remover</a>
+
+<a href="watermark.html">💧 Watermark</a>
+
+<a href="image-to-pdf.html">📄 Image to PDF</a>
+
+<a href="pdf-to-image.html" class="active">🖼 PDF to Image</a>
+
+</nav>
+
+<header>
+
+<div class="header-content">
+
+<div class="logo-area">
+
+<div>
+
+<h1>PDF to Image</h1>
+
+<p>Convert PDF pages into high-quality images</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<button id="themeBtn">
+🌙 Dark Mode
+</button>
+<div class="container">
+
+    <div class="upload-box">
+
+        <input
+            type="file"
+            id="pdfInput"
+            accept="application/pdf">
+
+        <p>📄 Select or Drag & Drop your PDF</p>
+
+    </div>
+
+    <div id="loader" class="loader">
+
+        Processing PDF...
+
+    </div>
+
+    <div class="pdf-editor">
+
+        <div class="preview-box">
+
+            <div id="pdfPreview">
+
+                <p>No PDF Selected</p>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="settings-panel">
+
+    <div class="format-box">
+
+        <label>Output Format</label>
+
+        <select id="imageFormat">
+
+            <option value="png">PNG</option>
+
+            <option value="jpeg">JPG</option>
+
+            <option value="webp">WEBP</option>
+
+        </select>
+
+    </div>
+
+</div>
+
+<div class="button-section">
+
+    <button id="convertBtn">
+        📄 Convert PDF
+    </button>
+
+</div>
+
+<div id="downloadSection">
+
+</div>
+<footer>
+
+<div class="footer-links">
+
+<a href="about.html">About Us</a>
+
+<a href="privacy.html">Privacy Policy</a>
+
+<a href="terms.html">Terms & Conditions</a>
+
+<a href="disclaimer.html">Disclaimer</a>
+
+<a href="contact.html">Contact Us</a>
+
+</div>
+
+<p>
+© 2026 Image Resize Pro. All Rights Reserved.
+</p>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script src="pdf-to-image.js"></script>
+
+</body>
+
+</html>

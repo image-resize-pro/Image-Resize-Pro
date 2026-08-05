@@ -1,0 +1,79 @@
+.page-card{
+
+    background:#1f2937;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    margin:20px auto;
+
+    max-width:350px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+.page-card img{
+
+    width:100%;
+
+    border-radius:10px;
+
+}
+
+.page-card a{
+
+    display:block;
+
+    margin-top:12px;
+
+    background:#22c55e;
+
+    color:#fff;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+.page-card a:hover{
+
+    background:#16a34a;
+
+}
+#downloadSection{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+#pdfPreview{
+
+    background:#1f2937;
+
+    color:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    margin-top:20px;
+
+}
