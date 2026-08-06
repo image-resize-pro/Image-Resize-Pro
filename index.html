@@ -19,38 +19,32 @@
 
 
 <nav class="tools-navbar">
-    <a href="index.html" class="active">🖼 Resize</a>
-    <a href="compress.html">🗜 Compress</a>
-    <a href="convert.html">🔄 Convert</a>
-    <a href="crop.html">✂ Crop</a>
-    <a href="background-remover.html">🎨 Background Remover</a>
-    <a href="watermark.html">💧 Watermark</a>
-    <a href="image-to-pdf.html">📄 Image to PDF</a>
-    <a href="pdf-to-image.html">🖼 PDF to Image</a>
+    <div class="brand">
+    <img src="logo.png" alt="Logo" class="toolbar-logo">
+    <span class="brand-name">IMAGE RESIZE PRO</span>
+</div>
+    
+    <a href="index.html" class="active">𝐑𝐞𝐬𝐢𝐳𝐞</a>
+    <a href="compress.html">𝐂𝐨𝐦𝐩𝐫𝐞𝐬𝐬</a>
+    <a href="convert.html">𝐂𝐨𝐧𝐯𝐞𝐫𝐭</a>
+    <a href="crop.html">𝐂𝐫𝐨𝐩</a>
+    <a href="background-remover.html">𝐁𝐚𝐜𝐤𝐠𝐫𝐨𝐮𝐧𝐝 𝐑𝐞𝐦𝐨𝐯𝐞𝐫</a>
+    <a href="watermark.html">𝐖𝐚𝐭𝐞𝐫𝐦𝐚𝐫𝐤</a>
+    <a href="image-to-pdf.html">𝐈𝐦𝐚𝐠𝐞 𝐭𝐨 𝐏𝐃𝐅</a>
+    <a href="pdf-to-image.html">𝐏𝐃𝐅 𝐭𝐨 𝐢𝐦𝐚𝐠𝐞</a>
 </nav>
 
-<header>
-    <div class="header-content">
-        <div class="logo-area">
-<img src="logo.png" alt="Image Resize Pro Logo" class="site-logo">
 
-            <div>
-                <h1>Image Resize Pro</h1>
-                <p>Free Online Image Editing Tools</p>
-            </div>
-        </div>
-    </div>
-</header>
 
 <button id="themeBtn">🌙 Dark Mode</button>
 
 
 <div class="container">
 
-    <div class="upload-box">
-        <input type="file" id="imageInput" accept="image/*">
-        <p>Select or Drag & Drop your Image</p>
-    </div>
+   <div class="upload-box" id="uploadBox">
+    <input type="file" id="imageInput" accept="image/*">
+    <p>Select or Drag & Drop your Image</p>
+</div>
 
 <div id="loader" class="loader">
     Processing...
@@ -73,16 +67,19 @@
 
     <button id="flipHorizontalBtn" class="tool-btn">↔</button>
 
-    <button id="removeImageBtn" class="tool-btn">🗑</button>
+    <button id="removeImageBtn" class="tool-btn">❌</button>
 
 </div>
     
     <div id="resizeControls">
 
     <div class="resize-box">
-        <input type="number" id="width" placeholder="Width">
-        <input type="number" id="height" placeholder="Height">
-    </div>
+    <input type="number" id="width" placeholder="Width">
+
+    <span class="resize-cross">×</span>
+
+    <input type="number" id="height" placeholder="Height">
+</div>
 
     <label class="lock-label">
         <input type="checkbox" id="lockRatio" checked>
@@ -107,20 +104,30 @@
 
     <div class="settings-row">
 
-    <div class="quality-box">
-        <label for="quality">
-            Image Quality:
-            <span id="qualityValue">90</span>%
-        </label>
+   
+
+   
+
+<div class="target-size-box">
+
+    <label>Target File Size (Optional)</label>
+
+    <div class="target-size-input">
 
         <input
-            type="range"
-            id="quality"
-            min="10"
-            max="100"
-            value="90">
+            type="number"
+            id="targetSize"
+            placeholder="200"
+            min="1">
+
+        <select id="targetUnit">
+            <option value="KB">KB</option>
+            <option value="MB">MB</option>
+        </select>
+
     </div>
 
+</div>
     <div class="format-box">
         <label for="format">Download Format:</label>
 

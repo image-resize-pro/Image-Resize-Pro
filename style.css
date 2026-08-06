@@ -27,10 +27,10 @@ header p{
 }
 
 .container{
-    width:80%;
-    max-width:600px;
-    margin:10px auto;
-    padding:12px;
+    width:92%;
+    max-width:520px;
+    margin:8px auto;
+    padding:8px;
 }
 .upload-box{
     border:2px dashed #2563eb;
@@ -46,15 +46,19 @@ header p{
 }
 
 .controls input{
-    width:100%;
-    padding:12px;
+    width:240px;
+    max-width:100%;
+    padding:10px;
     margin:10px 0;
     border:1px solid #ccc;
     border-radius:8px;
 }
 
 button{
-    width:100%;
+    width:70%;
+    max-width:500px;
+    display:block;
+    margin:6px auto;
     padding:9px;
     background:#2563eb;
     color:white;
@@ -62,7 +66,6 @@ button{
     border-radius:6px;
     cursor:pointer;
     font-size:14px;
-    margin-top:6px;
 }
 
 button:hover{
@@ -75,7 +78,11 @@ button:hover{
 }
 
 .preview img{
-    max-width:100%;
+    max-width:65%;
+    max-height:220px;
+    width:auto;
+    height:auto;
+    object-fit:contain;
     border-radius:10px;
 }
 
@@ -201,16 +208,24 @@ body.dark header{
 
 .lock-option input{
     margin-right:8px;
-}.format-box{
-    margin:15px 0;
-    text-align:center;
+
+.format-box{
+    width:240px;
+    margin:15px auto;
 }
 
 .format-box select{
+    width:100%;
     padding:8px;
     border-radius:8px;
-    border:1px solid #ccc;
     font-size:14px;
+}
+.format-box label{
+    width:70%;
+    max-width:500px;
+    margin-bottom:8px;
+    font-weight:600;
+}
 }.quality-box{
     margin:20px 0;
     text-align:center;
@@ -219,12 +234,14 @@ body.dark header{
 .quality-box input[type="range"]{
     width:100%;
     margin-top:10px;
-}.image-info{
-    margin:20px 0;
-    padding:15px;
-    background:#f1f5f9;
+}
+.image-info{
+    width:70%;
+    padding:10px;
+    margin:10px auto;
+    font-size:14px;
     border-radius:10px;
-    text-align:center;
+    max-width:500px;
 }
 
 body.dark .image-info{
@@ -347,15 +364,12 @@ body.dark .loader{
 /* ===== Tools Navigation ===== */
 
 .tools-navbar{
+    background:#0b3d91 !important;
     display:flex;
     align-items:center;
     gap:10px;
-    overflow-x:auto;
-    white-space:nowrap;
-    padding:12px 15px;
-    background:#1f2937;
-    border-bottom:1px solid #374151;
-    scrollbar-width:none;
+    padding:10px 15px;
+    border-bottom:2px solid #072c69;
 }
 
 .tools-navbar::-webkit-scrollbar{
@@ -363,25 +377,23 @@ body.dark .loader{
 }
 
 .tools-navbar a{
-    text-decoration:none;
-    color:#fff;
-    background:#374151;
-    padding:10px 16px;
-    border-radius:8px;
-    font-size:14px;
-    transition:.3s;
-    flex-shrink:0;
+    background: transparent;
+    color: #ffffff;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 0;
 }
-
 .tools-navbar a:hover{
-    background:#2563eb;
+    background: transparent;
+    color: #ffd54a;
 }
 
 .tools-navbar a.active{
-    background:#2563eb;
-    font-weight:bold;
+    background: transparent;
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
 }
-
 body:not(.dark) .tools-navbar{
     background:#ffffff;
     border-bottom:1px solid #ddd;
@@ -400,9 +412,9 @@ body:not(.dark) .tools-navbar a.active{
 
 .settings-row{
     display:flex;
+    flex-direction:column;
     gap:15px;
     margin:15px 0;
-    align-items:flex-end;
 }
 
 .settings-row .quality-box{
@@ -410,12 +422,10 @@ body:not(.dark) .tools-navbar a.active{
 }
 
 .settings-row .format-box{
-    flex:1;
+    width:100%;
 }
 
-.settings-row .quality-box{
-    text-align:left;
-}
+
 
 .settings-row .format-box{
     text-align:left;
@@ -435,14 +445,16 @@ body:not(.dark) .tools-navbar a.active{
 
 .editor-layout{
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:-4px;
-    margin-top:20px;
+    width:100%;
 }
 .left-panel{
-    flex:1;
-    min-width:0;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     position:relative;
 }
 
@@ -658,16 +670,15 @@ body:not(.dark) .tool-btn{
     display: inline-block;
 }
 .right-panel{
-    display: none;
-    position: absolute;
-    top: 35%;
-    right: 4px;
-    left: 0px;
-    transform: translateY(-50%);
-    z-index: 100;
-    transition: .3s ease;
-    flex-direction: column;
-    gap: 12px;
+    display:none;
+    position:absolute;
+    top:50%;
+    left:100%;
+    margin-left:10px;
+    transform:translateY(-50%);
+    flex-direction:column;
+    gap:10px;
+    z-index:100;
 }
 #cropBtn{
     width: 52px;
@@ -791,12 +802,12 @@ footer{
     text-align:center;
     font-size:2rem;
     margin-bottom:10px;
-    color:#ffffff;
+    color:#455b9a;
 }
 
 .guides-intro{
     text-align:center;
-    color:#b5b5b5;
+    color:#494dda;
     margin-bottom:35px;
     line-height:1.7;
 }
@@ -994,4 +1005,226 @@ input[type="range"]{
     height:90px;
     object-fit:contain;
     margin:0;
+}
+/* Target File Size */
+
+.option-divider{
+    margin:18px 0;
+    border:none;
+    border-top:1px solid #d1d5db;
+}
+
+.target-size-box{
+    width:340px;
+    margin:15px auto;
+}
+
+.target-size-input{
+    display:flex;
+    gap:8px;
+    max-width:500px;
+    margin:0 auto;
+}
+
+.target-size-box label{
+    display:block;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.target-size-input{
+    display:flex;
+    gap:10px;
+}
+
+.target-size-input input{
+    flex:1;
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.target-size-input select{
+    width:80px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+.tools-navbar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.toolbar-logo{
+    width:40px;
+    height:40px;
+    object-fit:contain;
+    margin-right:10px;
+}
+.tools-navbar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    margin-right:20px;
+    flex-shrink:0;
+}
+
+.toolbar-logo{
+    width:38px;
+    height:38px;
+    object-fit:contain;
+    margin-right:8px;
+}
+
+.brand-name{
+    color:#ed590f;
+    font-size:20px;
+    font-weight:700;
+}
+/* Light Mode Toolbar */
+body:not(.dark) .tools-navbar{
+    background:#0b3d91 !important;
+}
+
+/* Light Mode Tool Buttons */
+body:not(.dark) .tools-navbar a{
+    background:transparent !important;
+    color:#ffffff !important;
+}
+
+body:not(.dark) .tools-navbar a:hover{
+    background:rgba(255,255,255,0.15) !important;
+}
+
+body:not(.dark) .tools-navbar a.active{
+    background:#2563eb !important;
+    color:#ffffff !important;
+}
+.controls{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+.resize-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin:10px auto;
+}
+
+.resize-box input{
+    width:180px;
+    height:40px;
+}
+
+.resize-cross{
+    font-size:22px;
+    font-weight:bold;
+}
+/* Width & Height Box */
+.resize-box{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.resize-box input{
+    width:150px !important;
+    flex:none !important;
+}
+
+/* Download Format Box */
+.format-box{
+    width:150px !important;
+    margin:15px auto !important;
+}
+
+.format-box select{
+    width:150px !important;
+}
+
+/* Target Size Box */
+.target-size-box{
+    width:260px !important;
+}
+
+/* ===== Mobile Responsive Fix ===== */
+@media (max-width:768px){
+
+    .tools-navbar{
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    .editor-layout{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .preview img{
+        width:170px;
+        height:auto;
+    }
+
+    .right-panel{
+    position:absolute;
+    top:50%;
+    left:100%;
+    right:auto;
+    transform:translateY(-50%);
+    margin-left:8px;
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    z-index:1000;
+}
+
+    .resize-box{
+        flex-direction:row;
+        justify-content:center;
+        gap:8px;
+    }
+
+    .resize-box input{
+        width:120px !important;
+    }
+
+    .image-info{
+        width:95%;
+    }
+
+    .target-size-box,
+    .format-box{
+        width:95% !important;
+    }
+
+    .target-size-input{
+        display:flex;
+        gap:8px;
+    }
+
+    .target-size-input input{
+        flex:1;
+    }
+
+    .format-box select{
+        width:100% !important;
+    }
+
+    #resizeBtn,
+    #downloadBtn button{
+        width:95%;
+    }
 }

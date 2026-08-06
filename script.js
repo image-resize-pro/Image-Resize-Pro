@@ -44,6 +44,7 @@ imageInput.addEventListener("change", function () {
 originalImage.onload = function(){
 
     previewImage.src = originalImage.src;
+    document.getElementById("uploadBox").style.display = "none";
     rightPanel.style.display = "flex";
     previewImage.style.display = "block";
     rightPanel.style.display = "flex";
@@ -108,10 +109,61 @@ const resizeBtn = document.getElementById("resizeBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 
 const formatSelect = document.getElementById("format");
-const qualitySlider = document.getElementById("quality");
 
+
+const targetSizeInput = document.getElementById("targetSize");
+const targetUnit = document.getElementById("targetUnit");
+
+function getImageData(canvas, format, quality) {
+    return canvas.toDataURL(format, quality);
+}
+
+function getImageSize(base64) {
+    return (base64.length * 3) / 4;
+}
+
+function findTargetQuality(canvas, format, targetBytes){
+
+    let min = 0.05;
+    let max = 1.0;
+
+    let bestImage = "";
+    let bestQuality = 1;
+
+    for(let i = 0; i < 10; i++){
+
+        let quality = (min + max) / 2;
+
+        let image = canvas.toDataURL(format, quality);
+
+        let size = getImageSize(image);
+
+        bestImage = image;
+        bestQuality = quality;
+
+        if(Math.abs(size - targetBytes) < 2048){
+            break;
+        }
+
+        if(size > targetBytes){
+            max = quality;
+        }else{
+            min = quality;
+        }
+
+    }
+
+    return {
+        image: bestImage,
+        quality: bestQuality
+    };
+
+}
 
 resizeBtn.addEventListener("click", function(){
+
+console.log("Resize button clicked");
+
     loader.style.display = "block";
 loader.textContent = "⏳ Processing...";
 
@@ -122,6 +174,9 @@ loader.textContent = "⏳ Processing...";
 
 const width = parseInt(widthInput.value);
 const height = parseInt(heightInput.value);
+
+console.log("Width:", width);
+console.log("Height:", height);
 
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
@@ -158,17 +213,47 @@ ctx.drawImage(
 
 ctx.restore();
 
+let quality = 0.90;
 
+let targetBytes = null;
+
+if (targetSizeInput.value.trim() !== "") {
+
+    targetBytes = parseFloat(targetSizeInput.value);
+
+    if (targetUnit.value === "KB") {
+        targetBytes *= 1024;
+    } else {
+        targetBytes *= 1024 * 1024;
+    }
+
+}
     const format = formatSelect.value;
     
 
-    const quality = qualitySlider.value / 100;
+    
 
 
-    const resizedImage = canvas.toDataURL(
+    let resizedImage;
+
+if(targetBytes){
+
+    const result = findTargetQuality(
+        canvas,
+        format,
+        targetBytes
+    );
+
+    resizedImage = result.image;
+
+}else{
+
+    resizedImage = canvas.toDataURL(
         format,
         quality
     );
+
+}
     downloadBtn.href = resizedImage;
 
 if (format === "image/jpeg") {
@@ -323,9 +408,9 @@ applyCropBtn.addEventListener("click", () => {
 let croppedImage;
 
 if (formatSelect.value === "image/jpeg") {
-    croppedImage = canvas.toDataURL("image/jpeg", qualitySlider.value / 100);
+    croppedImage = canvas.toDataURL("image/jpeg", 0.90);
 } else if (formatSelect.value === "image/webp") {
-    croppedImage = canvas.toDataURL("image/webp", qualitySlider.value / 100);
+    croppedImage = canvas.toDataURL("image/webp", 0.90);
 } else {
     croppedImage = canvas.toDataURL("image/png");
 }
@@ -356,7 +441,7 @@ removeImageBtn.addEventListener("click", function () {
 
     previewImage.src = "";
     previewImage.style.display = "none";
-
+document.getElementById("uploadBox").style.display = "block";
     imageInput.value = "";
 
     document.querySelector(".preview").style.display = "none";
